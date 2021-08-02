@@ -6,9 +6,9 @@ mpn_model <- rstan::stan_model(file = "MPN.stan", model_name = "MPN poisson proc
 
 # List of model parameters + input data
 dat <- list(
-    n = 2,  # number of post-MRCA mutation estimates
-    m = c(506, 697),  # post-MRCA mutation estimates
-    M = 8,  # pre-MRCA mutation estimates (use array to pass a single value)
+    n = 2,  # number of post-MRCA SNV estimates
+    m = c(506, 697),  # post-MRCA SNV estimates
+    M = 8,  # pre-MRCA SNV estimates 
     min_permitted_lower_bound = 0,  # lower bound on uniform prior on 'T' in years
     max_permitted_upper_bound = 2044/52,  # upper bound on uniform prior on 'T' in years
     expon_rate = 0.0579  # parameter of exponential prior on mean mutation rate (see 41586_209_1907_MOESM13_MSM.xlsx)
