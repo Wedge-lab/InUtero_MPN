@@ -11,7 +11,7 @@ dat <- list(
     M = 8,  # pre-MRCA SNV estimates 
     min_permitted_lower_bound = 0,  # lower bound on uniform prior on 'T' in years
     max_permitted_upper_bound = 2044/52,  # upper bound on uniform prior on 'T' in years
-    expon_rate = 0.0579  # parameter of exponential prior on mean mutation rate (see 41586_209_1907_MOESM13_MSM.xlsx)
+    expon_rate = 0.0579  # parameter of exponential prior on mean mutation rate (Derived from source data for Extended Data Fig. 8 in Gerstung et al. The evolutionary history of 2,658 cancers. Nature 578, 122–128 (2020))
 )
 
 # Get MCMC samples from the model
