@@ -21,5 +21,5 @@ trace <- rstan::sampling(mpn_model, data = dat, iter = 50000, chains = 4)
 summary(trace, prob = c(0.025, 0.975))$summary
 
 # Plot 
-bayesplot::mcmc_areas(as.array(trace), pars = "t_origin", prob = .95) + ggplot2::labs(title = "Time to MPN origin (years)"); ggsave("timeToOrigin.pdf")
+bayesplot::mcmc_areas(as.array(trace), pars = "t_mrca", prob = .95) + ggplot2::labs(title = "Time to MPN MRCA (years)"); ggsave("timeToMRCA.pdf")
 bayesplot::mcmc_areas(as.array(trace), pars = "rate", prob = .95) + ggplot2::labs(title = "Mutation rate (total substitutions per year)"); ggsave("mutationRate.pdf")
