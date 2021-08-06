@@ -4,8 +4,7 @@ data {
     int M; // number of mutations since origin of MPN, until MRCA of all samples (long time period, T)
     
     // prior parameters:
-    real<lower=0> min_permitted_lower_bound;
-    real<lower=0> max_permitted_upper_bound;
+    
     real<lower=0> expon_rate;
 }
 transformed data {
@@ -20,9 +19,7 @@ parameters {
            upper=TWIN_B_AGE>[n] t; // length of time (years) before present to each sample's MRCA
     
     real<lower=1.5, upper=77> rate; // rate parameter of the Poisson process (mutations per unit time [year])
-    
-    real<lower=min_permitted_lower_bound,
-         upper=max_permitted_upper_bound> t_origin; // length of time (years) between origin of MPN and MRCA of all samples
+   
 }
 
 model {
@@ -36,10 +33,8 @@ model {
     // NB: Expectation(mutation rate) = 1/expon_rate
     rate ~ exponential(expon_rate);
  
-     t_origin ~ uniform(min_permitted_lower_bound, max_permitted_upper_bound);
-
     m[1] ~ poisson(rate * t[1]);
     m[2] ~ poisson(rate * t[2]);
     // likelihood of 'M' is Poisson, rate scaled by 'T'
-    M ~ poisson(rate * t_origin);
+    M ~ poisson(rate * t_mrca);
 }
